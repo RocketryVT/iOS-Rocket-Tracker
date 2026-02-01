@@ -515,7 +515,7 @@ extension BluetoothService: CBPeripheralDelegate {
                 print("Unknown packet type: \(packet.packetType)")
         }
 
-        let status = [
+        _ = [
             partialData.hasGps ? "GPS" : nil,
             partialData.hasIsmPrimary ? "ISM1" : nil, 
             partialData.hasIsmSecondary ? "ISM2" : nil,

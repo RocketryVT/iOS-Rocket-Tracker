@@ -2,32 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>MKDirectionsRequest</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.maps.directionsrequest</string>
+			</array>
+		</dict>
+	</array>
 	<key>MBXAccessToken</key>
 	<string>pk.eyJ1IjoiZ3JlZ29yeXczIiwiYSI6ImNrOGJ5dGUwZzBlNHozbGw2NG1ja3o3NHAifQ.2Oifdfj_vhY88d-Kjd-FbQ</string>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array>
+		<string>MKDirectionsModeCar</string>
+		<string>MKDirectionsModePedestrian</string>
+	</array>
 	<key>UIApplicationSupportsMultipleScenes</key>
 	<true/>
-	<key>UIRequiresFullScreen</key>
-	<false/>
-	<key>UISupportedInterfaceOrientations~ipad</key>
+	<key>UIBackgroundModes</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>processing</string>
+		<string>fetch</string>
+		<string>bluetooth-central</string>
+		<string>nearby-interaction</string>
+		<string>external-accessory</string>
+		<string>location</string>
 	</array>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Connects only to a companion RocketryAtVT Rocket Tracker Device. It only receives data from the bluetooth device and only transmits your GPS location back to the ground station</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;This app needs your location to show where you are in relation to the rocket.&quot;</string>
-	<key>NSLocationUsageDescription</key>
-	<string>&quot;Your location is used to calculate distance and direction to the rocket and transmit back to ground station&quot;</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Used to provide directional guidance to the rocket.</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
-	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<key>NSSupportsLiveActivities</key>
 	<true/>
 </dict>
 </plist>

@@ -5,7 +5,7 @@
 //  Created by Gregory Wainer on 5/14/25.
 //
 
-import SwiftUICore
+import SwiftUI
 import MapKit
 
 // Helper Components

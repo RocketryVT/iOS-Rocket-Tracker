@@ -108,7 +108,7 @@ struct MapboxMapView: UIViewRepresentable {
         )
         let tilesetDescriptor = offlineManager.createTilesetDescriptor(for: tilesetDescriptorOptions)
 
-        let tileRegionLoadOptions = TileRegionLoadOptions(
+        let _ = TileRegionLoadOptions(
             geometry: geometry,
             descriptors: [tilesetDescriptor],
             acceptExpired: true
@@ -314,3 +314,4 @@ struct PlaceholderMapView: View {
         .frame(height: 300)
     }
 }
+

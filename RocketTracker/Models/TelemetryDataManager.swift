@@ -2,7 +2,8 @@ import Foundation
 import GRDB
 import Combine
 
-class TelemetryDataManager {
+// Conforms to TelemetryStore
+class TelemetryDataManager: TelemetryStore {
     private let dbQueue: DatabaseQueue
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -32,6 +33,7 @@ class TelemetryDataManager {
             try dbQueue.write { db in
                 // Create the table if it doesn't exist
                 try db.create(table: "telemetryRecord", ifNotExists: true) { t in
+                    t.column("sessionID", .integer).references("session", onDelete: .setNull)
                     t.autoIncrementedPrimaryKey("id")
                     t.column("deviceID", .integer).notNull()
                     t.column("msgNum", .integer).notNull()
@@ -75,6 +77,27 @@ class TelemetryDataManager {
                     t.column("gps_utc_valid", .integer).notNull()
                     t.column("gps_utc_year", .integer).notNull()
                 }
+                try db.create(table: "session", ifNotExists: true) { t in
+                    t.autoIncrementedPrimaryKey("id")
+                    t.column("name", .text)
+                    t.column("deviceID", .integer)
+                    t.column("startDate", .datetime).notNull()
+                    t.column("endDate", .datetime)
+                }
+                
+                // Migration: ensure telemetryRecord has sessionID column
+                do {
+                    let columns = try Row.fetchAll(db, sql: "PRAGMA table_info('telemetryRecord')")
+                    let hasSessionID = columns.contains { row in
+                        (row["name"] as? String) == "sessionID"
+                    }
+                    if !hasSessionID {
+                        try db.execute(sql: "ALTER TABLE telemetryRecord ADD COLUMN sessionID INTEGER")
+                        print("Migrated: Added sessionID column to telemetryRecord")
+                    }
+                } catch {
+                    print("Migration check failed: \(error)")
+                }
             }
         } catch {
             print("Database setup failed: \(error)")
@@ -82,9 +105,10 @@ class TelemetryDataManager {
     }
     
     // Log new telemetry data
-    func logTelemetry(_ data: TelemetryData) {
+    func logTelemetry(_ data: TelemetryData, sessionID: Int64?) {
          let record = TelemetryRecord(
              id: nil, // Let SQLite auto-increment the ID
+             sessionID: sessionID,
              deviceID: Int32(data.deviceID),
              msgNum: Int32(data.msg_num),
              timeSinceBoot: Int32(data.time_since_boot),
@@ -169,6 +193,20 @@ class TelemetryDataManager {
         }
     }
     
+    // Get telemetry records by session
+    func getTelemetryRecords(sessionID: Int64) -> [TelemetryRecord] {
+        do {
+            return try dbQueue.read { db in
+                try TelemetryRecord.filter(TelemetryRecord.Columns.sessionID == sessionID)
+                    .order(TelemetryRecord.Columns.timestamp.asc)
+                    .fetchAll(db)
+            }
+        } catch {
+            print("Failed to fetch telemetry records for session: \(error)")
+            return []
+        }
+    }
+    
     // Get all available dates that have telemetry records
     func getAvailableDates(forDeviceID deviceID: UInt32? = nil) -> [Date] {
         do {
@@ -187,7 +225,6 @@ class TelemetryDataManager {
                 query += " ORDER BY date_only"
                 
                 let rows = try Row.fetchAll(db, sql: query, arguments: arguments)
-                let calendar = Calendar.current
                 
                 return rows.compactMap { row -> Date? in
                     guard let dateString = row["date_only"] as? String else { return nil }
@@ -213,6 +250,22 @@ class TelemetryDataManager {
             }
         } catch {
             print("Failed to fetch device IDs: \(error)")
+            return []
+        }
+    }
+    
+    // Get sessions, optionally filtered by device
+    func getSessions(deviceID: UInt32? = nil) -> [Session] {
+        do {
+            return try dbQueue.read { db in
+                var query = Session.all()
+                if let deviceID = deviceID {
+                    query = query.filter(Session.Columns.deviceID == Int32(deviceID))
+                }
+                return try query.order(Session.Columns.startDate.desc).fetchAll(db)
+            }
+        } catch {
+            print("Failed to fetch sessions: \(error)")
             return []
         }
     }
@@ -300,4 +353,38 @@ class TelemetryDataManager {
             print("Error counting records: \(error)")
         }
     }
+
+    // Convenience for tests/demo: quickly insert synthetic telemetry data
+    func insertDemoRecord(_ record: TelemetryRecord) {
+        do {
+            try dbQueue.write { db in
+                try record.insert(db)
+            }
+        } catch {
+            print("Failed to insert demo record: \(error)")
+        }
+    }
+
+    @discardableResult
+    func startNewSession(name: String?, deviceID: UInt32?) -> Int64? {
+        do {
+            return try dbQueue.write { db in
+                try db.execute(sql: "INSERT INTO session (name, deviceID, startDate) VALUES (?, ?, ?)", arguments: [name, deviceID != nil ? Int32(deviceID!) : nil, Date()])
+                return db.lastInsertedRowID
+            }
+        } catch {
+            print("Failed to start session: \(error)")
+            return nil
+        }
+    }
+    func endSession(_ sessionID: Int64) {
+        do {
+            try dbQueue.write { db in
+                try db.execute(sql: "UPDATE session SET endDate = ? WHERE id = ?", arguments: [Date(), sessionID])
+            }
+        } catch {
+            print("Failed to end session: \(error)")
+        }
+    }
 }
+

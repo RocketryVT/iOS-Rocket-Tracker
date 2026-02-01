@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		F3347DE32DF4D50E00802698 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F3347DE22DF4D50E00802698 /* GRDB */; };
+		F36438522F2036DC00BE701B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F36438512F2036DC00BE701B /* WidgetKit.framework */; };
+		F36438542F2036DC00BE701B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F36438532F2036DC00BE701B /* SwiftUI.framework */; };
+		F36438652F2036DD00BE701B /* TrackerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F364384F2F2036DC00BE701B /* TrackerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3BD16C12DDF964100453342 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = F3BD16C02DDF964100453342 /* MapboxMaps */; };
 		F3CA11E02DD5C4FA002933DA /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = F3CA11DF2DD5C4FA002933DA /* SwiftProtobuf */; };
 		F3CA11E22DD5C4FA002933DA /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = F3CA11E12DD5C4FA002933DA /* SwiftProtobufPluginLibrary */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F36438632F2036DD00BE701B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F38809072DD57B7B00EADF25 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F364384E2F2036DC00BE701B;
+			remoteInfo = TrackerWidgetExtension;
+		};
 		F38809202DD57B7D00EADF25 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F38809072DD57B7B00EADF25 /* Project object */;
@@ -30,13 +40,44 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F364386A2F2036DD00BE701B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F36438652F2036DD00BE701B /* TrackerWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		F364384F2F2036DC00BE701B /* TrackerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TrackerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F36438512F2036DC00BE701B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F36438532F2036DC00BE701B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F388090F2DD57B7B00EADF25 /* Rocketry At VT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rocketry At VT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F388091F2DD57B7D00EADF25 /* RocketTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RocketTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38809292DD57B7D00EADF25 /* RocketTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RocketTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F36438692F2036DD00BE701B /* Exceptions for "TrackerWidget" folder in "TrackerWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F364384E2F2036DC00BE701B /* TrackerWidgetExtension */;
+		};
+		F36438762F20380800BE701B /* Exceptions for "RocketTracker" folder in "TrackerWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Presenters/SharedRecordingAttributes.swift,
+			);
+			target = F364384E2F2036DC00BE701B /* TrackerWidgetExtension */;
+		};
 		F39630DE2DD58E9C007EA38D /* Exceptions for "RocketTracker" folder in "RocketTracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -47,10 +88,19 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F36438552F2036DC00BE701B /* TrackerWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F36438692F2036DD00BE701B /* Exceptions for "TrackerWidget" folder in "TrackerWidgetExtension" target */,
+			);
+			path = TrackerWidget;
+			sourceTree = "<group>";
+		};
 		F38809112DD57B7B00EADF25 /* RocketTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F39630DE2DD58E9C007EA38D /* Exceptions for "RocketTracker" folder in "RocketTracker" target */,
+				F36438762F20380800BE701B /* Exceptions for "RocketTracker" folder in "TrackerWidgetExtension" target */,
 			);
 			path = RocketTracker;
 			sourceTree = "<group>";
@@ -68,6 +118,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F364384C2F2036DC00BE701B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F36438542F2036DC00BE701B /* SwiftUI.framework in Frameworks */,
+				F36438522F2036DC00BE701B /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F388090C2DD57B7B00EADF25 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,12 +155,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F36438502F2036DC00BE701B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F36438512F2036DC00BE701B /* WidgetKit.framework */,
+				F36438532F2036DC00BE701B /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F38809062DD57B7B00EADF25 = {
 			isa = PBXGroup;
 			children = (
 				F38809112DD57B7B00EADF25 /* RocketTracker */,
 				F38809222DD57B7D00EADF25 /* RocketTrackerTests */,
 				F388092C2DD57B7D00EADF25 /* RocketTrackerUITests */,
+				F36438552F2036DC00BE701B /* TrackerWidget */,
+				F36438502F2036DC00BE701B /* Frameworks */,
 				F38809102DD57B7B00EADF25 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +182,7 @@
 				F388090F2DD57B7B00EADF25 /* Rocketry At VT.app */,
 				F388091F2DD57B7D00EADF25 /* RocketTrackerTests.xctest */,
 				F38809292DD57B7D00EADF25 /* RocketTrackerUITests.xctest */,
+				F364384F2F2036DC00BE701B /* TrackerWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,6 +190,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F364384E2F2036DC00BE701B /* TrackerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F36438662F2036DD00BE701B /* Build configuration list for PBXNativeTarget "TrackerWidgetExtension" */;
+			buildPhases = (
+				F364384B2F2036DC00BE701B /* Sources */,
+				F364384C2F2036DC00BE701B /* Frameworks */,
+				F364384D2F2036DC00BE701B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F36438552F2036DC00BE701B /* TrackerWidget */,
+			);
+			name = TrackerWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = TrackerWidgetExtension;
+			productReference = F364384F2F2036DC00BE701B /* TrackerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F388090E2DD57B7B00EADF25 /* RocketTracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F38809332DD57B7D00EADF25 /* Build configuration list for PBXNativeTarget "RocketTracker" */;
@@ -126,10 +219,12 @@
 				F388090B2DD57B7B00EADF25 /* Sources */,
 				F388090C2DD57B7B00EADF25 /* Frameworks */,
 				F388090D2DD57B7B00EADF25 /* Resources */,
+				F364386A2F2036DD00BE701B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F36438642F2036DD00BE701B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				F38809112DD57B7B00EADF25 /* RocketTracker */,
@@ -198,9 +293,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
-				LastUpgradeCheck = 1630;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					F364384E2F2036DC00BE701B = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					F388090E2DD57B7B00EADF25 = {
 						CreatedOnToolsVersion = 16.3;
 					};
@@ -236,11 +334,19 @@
 				F388090E2DD57B7B00EADF25 /* RocketTracker */,
 				F388091E2DD57B7D00EADF25 /* RocketTrackerTests */,
 				F38809282DD57B7D00EADF25 /* RocketTrackerUITests */,
+				F364384E2F2036DC00BE701B /* TrackerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F364384D2F2036DC00BE701B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F388090D2DD57B7B00EADF25 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,6 +371,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F364384B2F2036DC00BE701B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F388090B2DD57B7B00EADF25 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,6 +402,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F36438642F2036DD00BE701B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F364384E2F2036DC00BE701B /* TrackerWidgetExtension */;
+			targetProxy = F36438632F2036DD00BE701B /* PBXContainerItemProxy */;
+		};
 		F38809212DD57B7D00EADF25 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F388090E2DD57B7B00EADF25 /* RocketTracker */;
@@ -302,6 +420,71 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F36438672F2036DD00BE701B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KQ8J5D3R22;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrackerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TrackerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.rocketryatvirginiatech.RocketTracker.TrackerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F36438682F2036DD00BE701B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KQ8J5D3R22;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrackerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TrackerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.rocketryatvirginiatech.RocketTracker.TrackerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		F38809312DD57B7D00EADF25 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -336,6 +519,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = KQ8J5D3R22;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -362,6 +546,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Rocketry At VT - Rocket Tracker";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -401,6 +586,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = KQ8J5D3R22;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -419,6 +605,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "Rocketry At VT - Rocket Tracker";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -432,13 +619,37 @@
 				CODE_SIGN_ENTITLEMENTS = RocketTracker/RocketTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KQ8J5D3R22;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = YES;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RocketTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Rocketry At VT";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connects only to a companion RocketryAtVT Rocket Tracker Device. It only receives data from the bluetooth device and only transmits your GPS location back to the ground station";
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "Connects only to a companion RocketryAtVT Rocket Tracker Device. It only receives data from the bluetooth device and only transmits your GPS location back to the ground station";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Discover other apps running";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"Your location is used to calculate distance and direction to the rocket and transmit back to ground station\"";
+				INFOPLIST_KEY_NSLocationUsageDescription = "\"Your location is used to calculate distance and direction to the rocket and transmit back to ground station\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"This app needs your location to show where you are in relation to the rocket.\"";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Used to provide directional guidance to the rocket.";
+				INFOPLIST_KEY_NSNearbyInteractionAllowOnceUsageDescription = "Connect to other devices using this app for distance/posititioning";
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "Connect to other devices using this app for distance/posititioning";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Data like devices location is broadcasted to other devices using the app";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -447,15 +658,16 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.rocketryatvirginiatech.RocketTracker;
 				PRODUCT_NAME = "Rocketry At VT";
@@ -465,7 +677,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
 		};
@@ -478,13 +690,37 @@
 				CODE_SIGN_ENTITLEMENTS = RocketTracker/RocketTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KQ8J5D3R22;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = YES;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RocketTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Rocketry At VT";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connects only to a companion RocketryAtVT Rocket Tracker Device. It only receives data from the bluetooth device and only transmits your GPS location back to the ground station";
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "Connects only to a companion RocketryAtVT Rocket Tracker Device. It only receives data from the bluetooth device and only transmits your GPS location back to the ground station";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Discover other apps running";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"Your location is used to calculate distance and direction to the rocket and transmit back to ground station\"";
+				INFOPLIST_KEY_NSLocationUsageDescription = "\"Your location is used to calculate distance and direction to the rocket and transmit back to ground station\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"This app needs your location to show where you are in relation to the rocket.\"";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Used to provide directional guidance to the rocket.";
+				INFOPLIST_KEY_NSNearbyInteractionAllowOnceUsageDescription = "Connect to other devices using this app for distance/posititioning";
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "Connect to other devices using this app for distance/posititioning";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Data like devices location is broadcasted to other devices using the app";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -493,15 +729,16 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.rocketryatvirginiatech.RocketTracker;
 				PRODUCT_NAME = "Rocketry At VT";
@@ -511,7 +748,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
 		};
@@ -521,6 +758,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KQ8J5D3R22;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
@@ -544,6 +782,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KQ8J5D3R22;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
@@ -566,6 +805,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KQ8J5D3R22;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
@@ -588,6 +828,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KQ8J5D3R22;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
@@ -608,6 +849,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F36438662F2036DD00BE701B /* Build configuration list for PBXNativeTarget "TrackerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F36438672F2036DD00BE701B /* Debug */,
+				F36438682F2036DD00BE701B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F388090A2DD57B7B00EADF25 /* Build configuration list for PBXProject "RocketTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

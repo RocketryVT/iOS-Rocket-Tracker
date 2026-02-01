@@ -3,6 +3,7 @@ import GRDB
 
 struct TelemetryRecord: Codable, FetchableRecord, PersistableRecord, Identifiable {
     var id: Int64?
+    var sessionID: Int64?
     var deviceID: Int32
     var msgNum: Int32
     var timeSinceBoot: Int32
@@ -47,6 +48,7 @@ struct TelemetryRecord: Codable, FetchableRecord, PersistableRecord, Identifiabl
     
     enum Columns {
         static let id = Column(CodingKeys.id)
+        static let sessionID = Column(CodingKeys.sessionID)
         static let deviceID = Column(CodingKeys.deviceID)
         static let msgNum = Column(CodingKeys.msgNum)
         static let timeSinceBoot = Column(CodingKeys.timeSinceBoot)
