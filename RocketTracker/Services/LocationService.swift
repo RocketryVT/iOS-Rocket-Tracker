@@ -21,15 +21,14 @@ class LocationService: NSObject, LocationServiceProtocol, ObservableObject, CLLo
     private var locationManager: CLLocationManager
     
     @Published var userLocation: CLLocationCoordinate2D?
-    @Published var deviceHeading: Double = 0
     
     func setupLocationServices() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.allowsBackgroundLocationUpdates = false
+        locationManager.requestAlwaysAuthorization()
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.activityType = .otherNavigation
-        locationManager.pausesLocationUpdatesAutomatically = true
+        locationManager.pausesLocationUpdatesAutomatically = false
     }
 
     var userLocationPublisher: AnyPublisher<CLLocationCoordinate2D?, Never> {
@@ -39,12 +38,10 @@ class LocationService: NSObject, LocationServiceProtocol, ObservableObject, CLLo
     func startUpdatingLocation() {
 //        locationManager.startMonitoringSignificantLocationChanges()
         locationManager.startUpdatingLocation()
-        locationManager.startUpdatingHeading()
     }
     
     func stopUpdatingLocation() {
         locationManager.stopUpdatingLocation()
-        locationManager.stopUpdatingHeading()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -53,16 +50,10 @@ class LocationService: NSObject, LocationServiceProtocol, ObservableObject, CLLo
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        // Get magnetic heading (direction device is pointing)
-        deviceHeading = newHeading.magneticHeading
-    }
-    
     override init() {
         locationManager = CLLocationManager()
         super.init()
         setupLocationServices()
-        startUpdatingLocation()
     }
     
 }

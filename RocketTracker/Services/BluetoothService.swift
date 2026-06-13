@@ -182,6 +182,7 @@ class BluetoothService: NSObject, BluetoothServiceProtocol, ObservableObject {
     // MARK: - Private Properties
     private var centralManager: CBCentralManager!
     private var connectedDevice: CBPeripheral?
+    private var shouldScanWhenPoweredOn = false
     
     private var trackerPacketsCharacteristic: CBCharacteristic?
     private var userLocationCharacteristic: CBCharacteristic?
@@ -220,6 +221,7 @@ class BluetoothService: NSObject, BluetoothServiceProtocol, ObservableObject {
     
     /// Start scanning for Bluetooth devices
     func startScanning() {
+        shouldScanWhenPoweredOn = true
         if centralManager.state == .poweredOn {
             discoveredDevices = []
             centralManager.scanForPeripherals(withServices: nil, options: nil)
@@ -231,6 +233,7 @@ class BluetoothService: NSObject, BluetoothServiceProtocol, ObservableObject {
     
     /// Stop scanning for Bluetooth devices
     func stopScanning() {
+        shouldScanWhenPoweredOn = false
         centralManager.stopScan()
         print("Stopped scanning for devices")
     }
@@ -277,7 +280,9 @@ extension BluetoothService: CBCentralManagerDelegate {
         switch central.state {
         case .poweredOn:
             print("Bluetooth is powered on")
-            startScanning()
+            if shouldScanWhenPoweredOn {
+                startScanning()
+            }
         case .poweredOff:
             print("Bluetooth is powered off")
             isConnected = false

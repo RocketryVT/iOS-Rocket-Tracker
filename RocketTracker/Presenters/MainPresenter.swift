@@ -18,9 +18,6 @@ class MainPresenter: NSObject, ObservableObject {
     @Published var selectedDeviceID: UInt32? = nil // Track which device is selected
     
     @Published var userLocation: CLLocationCoordinate2D?
-    @Published var headingToRocket: Double?
-    @Published var deviceHeading: Double = 0
-    @Published var relativeHeadingToRocket: Double?
     @Published var selectedDate: Date? = nil
     @Published var isRecording: Bool = false
 
@@ -214,6 +211,14 @@ class MainPresenter: NSObject, ObservableObject {
 
     func getPathCoordinates(for deviceID: UInt32) -> [CLLocationCoordinate2D] {
         return pathCoordinatesByDevice[deviceID] ?? []
+    }
+
+    func startLocationUpdates() {
+        locationService.startUpdatingLocation()
+    }
+
+    func stopLocationUpdates() {
+        locationService.stopUpdatingLocation()
     }
     
     // Sessions API for UI
@@ -421,4 +426,3 @@ extension Double {
         return self * 180 / .pi
     }
 }
-

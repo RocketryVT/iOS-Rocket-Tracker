@@ -31,7 +31,14 @@ class TelemetryDataManager: TelemetryStore {
     private func setupDatabase() {
         do {
             try dbQueue.write { db in
-                // Create the table if it doesn't exist
+                try db.create(table: "session", ifNotExists: true) { t in
+                    t.autoIncrementedPrimaryKey("id")
+                    t.column("name", .text)
+                    t.column("deviceID", .integer)
+                    t.column("startDate", .datetime).notNull()
+                    t.column("endDate", .datetime)
+                }
+
                 try db.create(table: "telemetryRecord", ifNotExists: true) { t in
                     t.column("sessionID", .integer).references("session", onDelete: .setNull)
                     t.autoIncrementedPrimaryKey("id")
@@ -76,13 +83,6 @@ class TelemetryDataManager: TelemetryStore {
                     t.column("gps_utc_time_accuracy_estimate_ns", .double).notNull()
                     t.column("gps_utc_valid", .integer).notNull()
                     t.column("gps_utc_year", .integer).notNull()
-                }
-                try db.create(table: "session", ifNotExists: true) { t in
-                    t.autoIncrementedPrimaryKey("id")
-                    t.column("name", .text)
-                    t.column("deviceID", .integer)
-                    t.column("startDate", .datetime).notNull()
-                    t.column("endDate", .datetime)
                 }
                 
                 // Migration: ensure telemetryRecord has sessionID column
@@ -387,4 +387,3 @@ class TelemetryDataManager: TelemetryStore {
         }
     }
 }
-

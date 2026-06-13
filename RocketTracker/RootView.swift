@@ -3,6 +3,7 @@ import SwiftUI
 struct RootView: View {
     @EnvironmentObject private var presenter: MainPresenter
     @State private var showDeviceSelector = false
+    @State private var showCameraControls = false
 
     var body: some View {
         NavigationStack {
@@ -24,6 +25,12 @@ struct RootView: View {
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
+                        Button(action: { showCameraControls = true }) {
+                            Label("Camera", systemImage: "video")
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
                         Button(action: { presenter.toggleRecording() }) {
                             Label(presenter.isRecording ? "Stop" : "Record", systemImage: presenter.isRecording ? "record.circle.fill" : "record.circle")
                         }
@@ -39,6 +46,9 @@ struct RootView: View {
         }
         .sheet(isPresented: $showDeviceSelector) {
             DeviceSelectorView(presenter: presenter, isPresented: $showDeviceSelector)
+        }
+        .sheet(isPresented: $showCameraControls) {
+            CameraControlView()
         }
     }
 

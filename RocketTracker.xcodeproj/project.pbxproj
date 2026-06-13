@@ -901,8 +901,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
 			};
 		};
 		F3BD16BF2DDF964100453342 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {

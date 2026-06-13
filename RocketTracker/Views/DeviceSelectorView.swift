@@ -59,7 +59,7 @@ struct DeviceSelectorView: View {
                 }
             }
             .onAppear {
-                // presenter.startScanning()
+                presenter.startScanning()
             }
             .onDisappear {
                 presenter.stopScanning()

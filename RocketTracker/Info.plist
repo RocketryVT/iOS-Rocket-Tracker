@@ -7,11 +7,17 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>MKDirectionsRequest</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.apple.maps.directionsrequest</string>
 			</array>
 		</dict>
+	</array>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>org.rocketryatvirginiatech.RocketTracker.telemetry-upload</string>
 	</array>
 	<key>MBXAccessToken</key>
 	<string>pk.eyJ1IjoiZ3JlZ29yeXczIiwiYSI6ImNrOGJ5dGUwZzBlNHozbGw2NG1ja3o3NHAifQ.2Oifdfj_vhY88d-Kjd-FbQ</string>
@@ -20,6 +26,14 @@
 		<string>MKDirectionsModeCar</string>
 		<string>MKDirectionsModePedestrian</string>
 	</array>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Rocket Tracker uses Bluetooth to stay connected to paired tracker hardware and receive flight telemetry.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Rocket Tracker uses the local launch network to publish and synchronize telemetry with the ground station.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Rocket Tracker uses your location in the background to relay ground position data during launch operations.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Rocket Tracker uses your location to show your position relative to tracked rockets and relay ground position data.</string>
 	<key>UIApplicationSupportsMultipleScenes</key>
 	<true/>
 	<key>UIBackgroundModes</key>
