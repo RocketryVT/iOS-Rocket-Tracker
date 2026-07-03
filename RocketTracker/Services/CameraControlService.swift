@@ -44,7 +44,7 @@ final class CameraControlService: NSObject, ObservableObject {
         discoveredDevices.removeAll()
         isScanning = true
         statusMessage = "Scanning for RocketCam"
-        centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
+        centralManager.scanForPeripherals(withServices: nil, options: nil)
     }
 
     func stopScanning() {
@@ -187,6 +187,14 @@ extension CameraControlService: CBCentralManagerDelegate {
         advertisementData: [String: Any],
         rssi RSSI: NSNumber
     ) {
+        let advertisedServices = advertisementData[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID] ?? []
+        let advertisedName = advertisementData[CBAdvertisementDataLocalNameKey] as? String
+        let deviceName = advertisedName ?? peripheral.name
+
+        guard advertisedServices.contains(serviceUUID) || deviceName == "RocketCam" else {
+            return
+        }
+
         let camera = CameraPeripheral(peripheral: peripheral, rssi: RSSI)
         if let index = discoveredDevices.firstIndex(where: { $0.id == camera.id }) {
             discoveredDevices[index] = camera
